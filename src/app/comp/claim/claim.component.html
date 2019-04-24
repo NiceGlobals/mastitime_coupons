@@ -1,0 +1,58 @@
+<section class="overflow-box">
+  <iframe src="https://www.mastitimeradio.com" frameborder="0" class="background-frame"></iframe>
+  <div class="foreground-frame px-4" *ngIf="showFrame">
+    <div class="container pt-md-5">
+      <div class="row pt-5">
+        <div class="col-12 col-md-8 col-lg-5 bg-white mx-auto mt-5 p-4 card">
+          <p class="text-right text-danger my-0 sticky-on-top">
+            <a class="btn-link p-2 text-danger" href="javascript:void(0)" (click)="toggleFrame()">
+              <i class="fa fa-close" style="font-size: 20px"></i>
+            </a>
+          </p>
+          <div class="row">
+            <div class="col-12 col-lg-8 col-xl-7 mx-auto py-5 px-4" *ngIf="viewSt == 1">
+              <h5 class="fw-500 text-center">
+                Please enter coupon code
+              </h5>
+              <hr class="mt-0">
+              <form (ngSubmit)="onSubmit(cF2.value)" class="flat-ui mt-3 pt-3" #cF2="ngForm">
+                <div class="form-group"> 
+                  <input type="text" class="form-control text-uppercase text-center" required 
+                  name="couponCode" #codeIP="ngModel" [(ngModel)]="couponCode" placeholder="CODE" pattern="[a-zA-Z0-9]{8}">
+                  <div class="w-100 o-hidden">
+                    <p class="mb-0 text-danger text-center w3-animate-bottom" *ngIf="codeIP.invalid && codeIP.touched"><small class="">Invalid coupon code</small></p>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn w-100 py-3 rounded btn-primary mt-3" [disabled]="cF2.form.invalid || cF2.form.pristine">Claim</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-12 mx-auto py-5" *ngIf="viewSt == 0">
+              <p class="text-center pt-5">
+                <img src="https://www.mastitimeradio.com/tambola-dam/img/spinners/loading.svg" style="width: 180px; height: auto;" alt="">
+              </p>
+              <p class="text-center">Please wait, we are finding your coupon / movie pass.</p>
+              <!-- <p class="text-center">Keep enjoying Mastitimeradio.!!!</p> -->
+            </div>
+            <div class="col-12 mx-auto py-5" *ngIf="viewSt == 2">
+              <p class="text-center pt-5">
+                <img src="https://www.mastitimeradio.com/tambola-dam/img/spinners/success.svg" style="width: 180px; height: auto;" alt="">
+              </p>
+              <p class="text-center">Congratulations !!!, You will recieve your Coupon / Movie pass in your inbox shortly.</p>
+              <p class="text-center">Keep enjoying Mastitimeradio.</p>
+            </div>
+            <div class="col-12 mx-auto py-5" *ngIf="viewSt == 4">
+              <p class="text-center pt-5">
+                <img src="https://www.mastitimeradio.com/tambola-dam/img/spinners/failed.svg" style="width: 180px; height: auto;" alt="">
+              </p>
+              <p class="text-center">Oops !!! Something went wrong, We are unable to find your coupon.</p>
+              <p class="text-center">Please check your details entered or Contact Mastitimeradio.</p>
+              <p class="text-center"><a routerLink="/claim" (click)="viewSt = 1; couponCode = null" class="btn-link">Try entering coupon?</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

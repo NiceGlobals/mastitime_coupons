@@ -1,0 +1,22 @@
+quill-editor div.ql-container.ql-snow {
+  border-top: 0px;
+  min-height: 150px !important;
+}
+
+/* .ql-container.ql-snow {height: 400px !important} */
+.array-list {margin-right: 4px; margin-bottom: 4px; background-color: #f2f2f2; color: #777; font-size: 14px; padding: 3px 12px; border-radius: 30px; display: inline-block;}
+.array-list a>i.material-icons {color: #777;font-size: 17px; vertical-align: -4px; line-height: inherit}
+.array-list a:hover>i.material-icons {color: #222; }
+.file-upload-thumb {
+  border: 4px solid #fff;
+  box-shadow: 0px 0px 7px #8d8b8b;
+  margin-top: 8px;
+  max-width: 100%;
+  width: 300px;
+  height: auto;
+}
+
+quill-editor div.ql-container.ql-snow>div.ql-editor.ql-blank {
+  height: 350px !important;
+}
+/* div.ql-container.ql-snow {min-height: 300px !important;} */

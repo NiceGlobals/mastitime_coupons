@@ -1,0 +1,16 @@
+{
+  "uid": "hjsdjsdb-vhfgebjwb-djfdskwd", // string
+  "type": 0, // ["Movie Ticket", "Restaurrant Coupon", "Others"]
+  "expDt": 0, // Expiry date,
+  "qty": 0, // Qty allowed
+  "avlQty": 0, // Available quantity
+  "avlPub": 0, // Available to public, ["hold", "avl"]
+  "bgImgUrl": 0, // Available to public, ["hold", "avl"]
+  "thumbUrl": 0, // Available to public, ["hold", "avl"]
+  "bccEmails": ["email1", "email2"],
+  "fullDesc": "", // full description of the ticket
+  "title": "Title of the Coupon"
+}
+
+
+// 0: movie ticket, 1: Restaurrant coupon, 3: others

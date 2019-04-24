@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top py-0">
+  <div class="container justify-content-between">
+    <a class="navbar-brand" routerLink="/ap/send_coupon" (click)="navToggle(false)">Mastitimeradio</a>
+    <button (click)="navToggle()" class="navbar-toggler" type="button">
+      <i class="material-icons" *ngIf="!navOpen">menu</i> <i class="material-icons" *ngIf="navOpen">close</i>
+    </button>
+    <div class="collapse navbar-collapse w3-animate-bottom" [ngClass]="navOpen ? 'show':''" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="coupons" (click)="navToggle(false)" routerLinkActive="active"><i class="material-icons mr-2">library_books</i>Coupons</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="send_coupon" (click)="navToggle(false)" routerLinkActive="active"><i class="material-icons mr-2">playlist_add_check</i>Send Coupon</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mr-0" href="javascript:void(0)" (click)="logout()"><i class="material-icons mr-2" >person_pin</i>Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

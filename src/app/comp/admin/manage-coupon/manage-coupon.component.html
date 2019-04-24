@@ -1,0 +1,74 @@
+<section class="py-4">
+  <div class="container">
+    <h4 class="fw-300">{{editMode ? 'Update':'Create'}} Coupon</h4>
+    <hr>
+    <div class="row">
+      <div class="col-12 col-md-12 col-lg-8">
+        <form #cF="ngForm" (ngSubmit)="onSubmit(cF.value)">
+          <div class="form-group">
+            <label class="required" for="">Coupon title</label>
+            <input type="text" class="form-control" #title="ngModel" [(ngModel)]="coupon.title" name="title" required>
+          </div>
+          <div class="form-row">
+            <div class="col-12 col-md-6 form-group">
+              <label class="required" for="">Coupon type</label>
+              <select name="couponType" id="" class="form-control" [(ngModel)]="coupon.type" #cType="ngModel" name="type" required>
+                <option value="" disabled>Select</option>
+                <option value="0">Movie ticket</option>
+                <option value="1">Restaurant coupon</option>
+                <option value="2">Others</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-6 form-group">
+              <label class="required" for="">Coupon quantity</label>
+              <input type="number" min="1" class="form-control" [(ngModel)]="coupon.qty" #cQty="ngModel" name="qty" *ngIf="!editMode">
+              <input type="number" min="1" class="form-control" [(ngModel)]="coupon.avlQty" #aQty="ngModel" name="qty" *ngIf="editMode">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="required" for="">Vendor mails / BCC</label>
+            <div class="w-100 py-1">
+              <span class="array-list" *ngFor="let bcc of coupon.bcc; let i = index">{{bcc}} <a href="javascript:void(0)" (click)="removeBCC(i)"><i class="material-icons">close</i></a></span>
+            </div>
+            <div class="form-row">
+              <div class="col-12 col-md-9"><input type="text" class="form-control" #bcc="ngModel" 
+              name="bcc" [(ngModel)]="BccIp"></div>
+              <div class="col"><button type="button" class="w-100 btn px-3 br-0" (click)="addBCC(bcc.value)" >+ Add</button></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="required" for="">CC</label>
+            <div class="w-100 py-1">
+              <span class="array-list" *ngFor="let cc of coupon.cc; let i = index">{{cc}} <a href="javascript:void(0)" (click)="removeCC(i)"><i class="material-icons">close</i></a></span>
+            </div>
+            <div class="form-row">
+              <div class="col-12 col-md-9"><input type="text" class="form-control"
+               #ccip="ngModel" [(ngModel)]="ccIp" name="ccIp"></div>
+              <div class="col"><button type="button" class="w-100 btn px-3 br-0" (click)="addCC(ccip.value)" >+ Add</button></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="required" for="">Mail subject</label>
+            <textarea class="form-control" #subj="ngModel" [(ngModel)]="coupon.subj" name="subj" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="" class="required">Banner Image:</label>
+            <input type="file" class="d-block" (change)="readURL($event)" accept="image/jpeg,image/png">
+            <p class="my-0"><small class="help-text">For best appearance, Banner image must be 600 * 330 px and 72px/Inch.</small></p>
+            <img class="file-upload-thumb" [src]="selectedImage || coupon.bannerImg" alt="" *ngIf="selectedImage || coupon.bannerImg">
+          </div>
+          <div class="form-group">
+            <label for="" class="required">Full description for coupon</label>
+            <quill-editor name="quillEditor" class="quill-editor-main" ngModel required 
+            [(ngModel)]="quillData" [modules]="getQuillToolbar()"></quill-editor>
+          </div>
+          <div class="form-group">
+            <button class="btn px-5 py-2 br-0 btn-primary mr-3" type="submit"
+             [disabled]="cF.form.invalid || cF.form.pristine || formSubmitted">Submit</button>
+            <a routerLink="/ap" class="btn-link text-danger px-5">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

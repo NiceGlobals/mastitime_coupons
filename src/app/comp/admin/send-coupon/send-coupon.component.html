@@ -1,0 +1,43 @@
+<section class="py-4">
+  <div class="container">
+    <h4 class="fw-300">Send Coupon</h4>
+    <hr>    
+    <div class="row">
+      <div class="col-12 col-lg-5 mx-auto">
+        <form (ngSubmit)="onSubmit(sC.value)" #sC="ngForm">
+          <div class="form-group">
+            <label for="" class="required">Winner name</label>
+            <input class="form-control" type="text" name="winnerName" ngModel required>
+          </div>
+          <div class="form-row">
+            <div class="col form-group">
+              <label for="" class="required">Phone number</label>
+              <input class="form-control" type="text" pattern="[0-9][0-9]{9}" name="winnerPhone" ngModel required>
+            </div>
+            <div class="col form-group">
+              <label for="" class="required">Winner Email</label>
+              <input class="form-control" type="email" name="winnerEmail" ngModel required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="required">Radio show</label>
+            <input class="form-control" type="text" name="radioShow" ngModel required>
+          </div>
+          <div class="form-group">
+            <label for="" class="required">Select a coupon</label>
+            <select name="" id="" class="form-control" required name="coupon" ngModel>
+              <option value="" disabled>Select</option>
+              <option [value]="coupon.uid" *ngFor="let coupon of Coupons" 
+              [disabled]="coupon.avlQty < 1">{{coupon.title}} ( {{coupon.avlQty || 0}}/{{coupon.qty}} )</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary px-5 py-2 br-0" [disabled]="sC.form.invalid || sC.form.pristine">Send</button>
+            <a routerLink="/ap" class="text-danger btn-link px-5 py-2">Cancel</a>
+            <!-- <button class="btn btn-secondary" type="button" (click)="followByCouponCode()">Test</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
