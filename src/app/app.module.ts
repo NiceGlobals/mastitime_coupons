@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { environment } from '../environments/environment';
+
 import { FormsModule } from '@angular/forms';
 
 import { RouterModule } from '@angular/router';
@@ -29,18 +31,18 @@ import { LoadingComponent } from './comp/basic/loading/loading.component';
 import { SendCouponComponent } from './comp/admin/send-coupon/send-coupon.component';
 import { ClaimComponent } from './comp/claim/claim.component';
 
-const config = {
-  apiKey: 'AIzaSyCiRsz0SvHP8UpD_o6C9du_nHpBcDmv6-Q',
-  authDomain: 'mastitime-projects.firebaseapp.com',
-  databaseURL: 'https://mastitime-projects.firebaseio.com',
-  // databaseURL: 'https://job-board-central-prod.firebaseio.com',
-  projectId: 'mastitime-projects',
-  storageBucket: 'mastitime-projects.appspot.com',
-  messagingSenderId: '873517723368'
-};
+// const config = {
+//   apiKey: 'AIzaSyCiRsz0SvHP8UpD_o6C9du_nHpBcDmv6-Q',
+//   authDomain: 'mastitime-projects.firebaseapp.com',
+//   databaseURL: 'https://mastitime-projects.firebaseio.com',
+//   // databaseURL: 'https://job-board-central-prod.firebaseio.com',
+//   projectId: 'mastitime-projects',
+//   storageBucket: 'mastitime-projects.appspot.com',
+//   messagingSenderId: '873517723368'
+// };
 
 @NgModule({
-  imports:      [ BrowserModule, AngularFireModule.initializeApp(config), AngularFireDatabaseModule, FormsModule, RouterModule.forRoot(appRoutes), AngularFireStorageModule, QuillModule  ],
+  imports: [BrowserModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireDatabaseModule, FormsModule, RouterModule.forRoot(appRoutes), AngularFireStorageModule, QuillModule  ],
   declarations: [ AppComponent, HelloComponent, NavComponent, FooterComponent, AuthComponent, MainComponent, AdminComponent, CouponsComponent, ManageCouponComponent, LoadingComponent, SendCouponComponent, ClaimComponent ],
   bootstrap:    [ AppComponent ],
   providers: [AuthService, AuthGuardService, FireService, DataService,{ provide: StorageBucket, useValue: 'mastitime-projects.appspot.com'}, AngularFireAuth]
