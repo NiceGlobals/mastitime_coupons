@@ -23,7 +23,8 @@ export class SendCouponComponent implements OnInit {
   ngOnInit() {
     this._fs.getCouponsList().on('value', snap => {
       if (snap.val() !== null) {
-        this.Coupons = this._ds.getExtractedDataWithKeys(snap.val());
+        const extCoupons = this._ds.getExtractedDataWithKeys(snap.val());
+        this.Coupons = extCoupons.sort((a: Coupon, b: Coupon) => b.created - a.created);
       }
     })
   }
