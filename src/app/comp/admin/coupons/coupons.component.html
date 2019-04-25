@@ -11,8 +11,29 @@
       </div>
     </div>
     <hr class="mt-0">
+    <div class="row my-3">
+      <div class="col ">
+        <div class="form-row justify-content-between align-items-center">
+          <div class="col d-inline-block" style="width: 250px;">
+            <input type="text" placeholder="search" class="form-control" [(ngModel)]="searchKey"
+              (keyup)="filterCoupons(searchKey)">
+          </div>
+          <div class="search-button col d-inline-block" style="width: 50px">
+            <a href="javascript:void(0)" class="text-danger" style="font-size: 28px; line-height: 28px"
+              [ngClass]="searchKey.length > 0 ? 'disabled':''" (click)="resetFilter()">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col text-right">
+        <ngb-pagination [collectionSize]="coupons.length" [(page)]="page" [pageSize]="10" [maxSize]="8" [rotate]="true"
+          [ellipses]="false" class="d-flex justify-content-end"
+          [boundaryLinks]="true" (pageChange)="onPageChange($event)"></ngb-pagination>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-12 col-md-6 col-lg-3" *ngFor="let coupon of coupons">
+      <div class="col-12 col-md-6 col-lg-3" *ngFor="let coupon of dispCoupons">
         <div class="coupon" routerLink="/ap/coupon/edit/{{coupon.uid}}">
           <div class="d-block mb-2 text-primary">{{coupon.title}}</div>
           <div class="d-block text-muted">

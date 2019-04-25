@@ -10,7 +10,8 @@ export class Coupon {
     public created?: number,
     public updated?: number,
     public avlQty?: number,
-    public bannerImg?: string
+    public bannerImg?: string,
+    public uid?: string
   ) {
     const Obj = {
       title: title || '',
@@ -23,7 +24,8 @@ export class Coupon {
       created: created || new Date().getTime(),
       updated: updated || new Date().getTime(),
       avlQty: avlQty || 0,
-      bannerImg: bannerImg || ''
+      bannerImg: bannerImg || '',
+      uid: uid || null
     }
     return Obj;
   }
